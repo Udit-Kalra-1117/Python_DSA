@@ -39,7 +39,7 @@ def convertInfixToPostfix(exp):
     print("".join(x for x in result))
 
 # Driver Code
-expression = "a+b*(c^d-e)^(f+g*h)-i"
+expression = input("Enter the infix expression to be converted to postfix: ")
 print()
 convertInfixToPostfix(expression)
 print()
