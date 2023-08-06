@@ -54,7 +54,7 @@ def convertInfixToPrefix(expr):
     print("".join(x for x in result))
 
 # Driver Code
-expression = "a+b*(c^d-e)^(f+g*h)-i"
+expression = input("Enter the infix expression to be converted to prefix: ")
 print()
 convertInfixToPrefix(expression)
 print()
