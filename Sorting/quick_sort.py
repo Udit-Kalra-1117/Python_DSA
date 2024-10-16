@@ -2,27 +2,40 @@
 
 # function to find the partition position
 def partition(array, low, high):
-    # choose the rightmost element as pivot
-    pivot = array[high]
+    # choose the leftmost element as pivot
+    pivot = array[low]
 
-    # pointer for greater element
-    i = low - 1
+    # pointer for element at next consecutive position from pivot
+    i = low + 1
+
+    # pointer for the rightmost element
+    j = high
 
     # traverse through all elements
     # compare each element with pivot
-    for j in range(low, high):
-        if array[j] <= pivot:
-        # if element smaller than pivot is found
-        # swap it with the greater element pointed by i
-            i = i + 1
-            # swapping element at i with element at j
-            (array[i], array[j]) = (array[j], array[i])
+    while True:
+        
+        # this loop runs from left-to-right and finds the element which is greater than pivot
+        # so that all elements greater than pivot can be shifted to the right of pivot
+        while i <= j and array[i] <= pivot:
+            i += 1
 
-    # swap the pivot element with the greater element specified by i
-    (array[i + 1], array[high]) = (array[high], array[i + 1])
+        # this loop runs from right-to-left and finds the element which is smaller than pivot
+        # so that the elements smaller than pivot can be shifted to the left of pivot
+        while i <= j and array[j] >= pivot:
+            j += 1
+
+        # this helps in placing the values of the array in sorted order
+        if i <= j:
+            array[i], array[j] = array[j], array[i]
+        else:
+            break
+            
+    # swap the pivot element with the smaller element (in value when compared by pivot) specified by j
+    (array[low], array[j]) = (array[j], array[low])
 
     # return the position from where partition is done
-    return i + 1
+    return j
 
 # function to perform quicksort
 def quickSort(array, low, high):
